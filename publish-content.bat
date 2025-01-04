@@ -12,13 +12,13 @@ set "default_repo_folder=C:\Users\karan\OneDrive\Desktop\test-blog"
 set "remote_url=https://github.com/%github_username%/%github_repo%.git"
 
 REM Get current date in YYYY-MM-DD format
-for /f "tokens=1-3 delims=/" %%a in ('powershell -Command "Get-Date -Format 'MM/dd/yyyy'"') do (
-    set "month=%%a"
-    set "day=%%b"
-    set "year=%%c"
+for /f "tokens=1-3 delims=/" %%a in ('powershell -Command "Get-Date -Format 'yyyy-MM-dd'"') do (
+    set "year=%%a"
+    set "month=%%b"
+    set "day=%%c"
 )
 
-REM Create properly formatted date
+REM Create properly formatted date (YYYY-MM-DD)
 set "formatted_date=%year%-%month%-%day%"
 
 REM Validate and set repository folder
@@ -82,7 +82,7 @@ set "formatted_title=%post_title%"
 REM Convert to lowercase and replace special characters using PowerShell
 for /f "delims=" %%i in ('powershell -command "$title = '%formatted_title%'; $title = $title.ToLower(); $title = $title -replace '[^a-z0-9\s-]', ''; $title = $title -replace '\s+', '-'; $title = $title -replace '-+', '-'; $title = $title.Trim('-'); Write-Output $title"') do set "formatted_title=%%i"
 
-REM Generate filename with properly formatted date
+REM Create filename with date format YYYY-MM-DD
 set "post_file=_posts\%formatted_date%-%formatted_title%.md"
 
 REM Check if file already exists
@@ -92,13 +92,15 @@ if exist "%post_file%" (
     if /i not "!overwrite!"=="Y" goto GET_TITLE
 )
 
-REM Create post content
-echo --- > "%post_file%"
-echo layout: post >> "%post_file%"
-echo title: "%post_title%" >> "%post_file%"
-echo date: %formatted_date% >> "%post_file%"
-echo --- >> "%post_file%"
-echo. >> "%post_file%"
+REM Create post content with proper YAML front matter
+(
+echo ---
+echo layout: post
+echo title: "%post_title%"
+echo date: %formatted_date%
+echo ---
+echo.
+) > "%post_file%"
 
 REM Get post content
 echo Enter your post content below.
