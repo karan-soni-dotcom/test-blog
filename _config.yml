@@ -4,9 +4,9 @@ email: "your-email@example.com"
 description: >-
   A test blog hosted on GitHub Pages using Jekyll.
 baseurl: "/test-blog" # Change this based on your repo name, use "" if hosted at username.github.io
-url: "https://simplisoni.github.io" # Your GitHub Pages domain
+url: "https://karan-soni-dotcom.github.io" # Updated GitHub Pages domain
 twitter_username: jekyllrb
-github_username: simplisoni
+github_username: karan-soni-dotcom
 
 # Build settings
 theme: minima
