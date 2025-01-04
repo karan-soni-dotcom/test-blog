@@ -1,0 +1,34 @@
+# Site settings
+title: "Test Blog"
+email: "your-email@example.com"
+description: >-
+  A test blog hosted on GitHub Pages using Jekyll.
+baseurl: "/test-blog" # Change this based on your repo name, use "" if hosted at username.github.io
+url: "https://simplisoni.github.io" # Your GitHub Pages domain
+twitter_username: jekyllrb
+github_username: simplisoni
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Permalink settings for clean URLs
+permalink: /blog/:title/  # Updated for simpler post URLs
+
+# Ensure Jekyll picks up new files
+include:
+  - _posts/
+
+# Exclude unnecessary files from Jekyll processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+
+# Force Jekyll to always reprocess
+future: true  # Ensures future-dated posts are included
