@@ -8,6 +8,17 @@ url: "https://karan-soni-dotcom.github.io" # Updated GitHub Pages domain
 twitter_username: jekyllrb
 github_username: karan-soni-dotcom
 
+# Navigation settings
+nav:
+  - title: "Home"
+    url: "/"
+  - title: "Blog"
+    url: "/blog/"
+  - title: "About"
+    url: "/about/"
+  - title: "Contact"
+    url: "/contact/"
+
 # Build settings
 theme: minima
 plugins:
